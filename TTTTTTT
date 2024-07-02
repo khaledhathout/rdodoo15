@@ -26,11 +26,9 @@ services:
       - USER=root
       - PASSWORD=root
     volumes:
-      #- /etc/timezone:/etc/timezone:trt
-      #- /etc/localtime:/etc/localtime:trt
-      # - ./entrypoint.sh:/entrypoint.sh   # if you want to install additional Python packages, uncomment this line!
-      - ./addons:/mnt/extra-addons
-      - ./odoo/odoo-server/customs_addons:/mnt/extra-addons
+      - ./odoo/odoo-server/customs_addons:/mnt/extra-addons:rw
+      - ./root/opt/rdodoo15/addons:/mnt/extra-addons:rw
+      - ./root/opt/rdodoo15/odoo/odoo-server/customs_addons:/mnt/extra-addons
       - ./etc:/etc/odoo
     restart: always             # run as a service
     
