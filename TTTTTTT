@@ -23,8 +23,8 @@ services:
     command: --
     environment:
       - HOST=db
-      - USER=root
-      - PASSWORD=root
+      - USER=odoo
+      - PASSWORD=changeme
     volumes:
       - ./root/opt/rdodoo15/odoo/odoo-server/customs_addons:/mnt/extra-addons:rw
     restart: always             # run as a service
