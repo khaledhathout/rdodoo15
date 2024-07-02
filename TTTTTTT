@@ -23,8 +23,8 @@ services:
     command: --
     environment:
       - HOST=db
-      - USER=odoo
-      - PASSWORD=changeme
+      - USER=hr@alrasheedco.com.sa
+      - PASSWORD=9NZWWmh3J232WH237jC
     volumes:
       - ./root/opt/rdodoo15/odoo/odoo-server/customs_addons:/mnt/extra-addons:rw
     restart: always             # run as a service
