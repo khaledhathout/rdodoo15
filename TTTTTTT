@@ -2,14 +2,14 @@ version: '3.4'
 services:
   db:
     image: postgres:12.18
-    user: root
+    user: postgres
     environment:
-      - POSTGRES_USER=odoo
-      - POSTGRES_PASSWORD=odoo15@2022      
-      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=changeme
+      - POSTGRES_DB=HR2024
     restart: always             # run as a service
     volumes:
-        - ./postgresql:/var/lib/postgresql/data
+        - ./postgresql:/var/lib/postgresql/12/main
 
   odoo15:
     image: odoo:15
@@ -23,13 +23,14 @@ services:
     command: --
     environment:
       - HOST=db
-      - USER=odoo
-      - PASSWORD=odoo15@2022
+      - USER=root
+      - PASSWORD=root
     volumes:
       #- /etc/timezone:/etc/timezone:trt
       #- /etc/localtime:/etc/localtime:trt
       # - ./entrypoint.sh:/entrypoint.sh   # if you want to install additional Python packages, uncomment this line!
       - ./addons:/mnt/extra-addons
+      - ./odoo/odoo-server/customs_addons:/mnt/extra-addons
       - ./etc:/etc/odoo
     restart: always             # run as a service
     
