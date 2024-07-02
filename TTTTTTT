@@ -26,7 +26,6 @@ services:
       - USER=root
       - PASSWORD=root
     volumes:
-      - ./odoo/odoo-server/customs_addons:/mnt/extra-addons:rw
-      - ./etc:/etc/odoo
+      - ./root/opt/rdodoo15/odoo/odoo-server/customs_addons:/mnt/extra-addons:rw
     restart: always             # run as a service
     
