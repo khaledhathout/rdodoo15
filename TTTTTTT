@@ -13,17 +13,15 @@ services:
 
   odoo15:
     image: odoo:15
-    user: root
+    user: odoo15
     depends_on:
       - db
     ports:
       - "10015:8069"
       - "20015:8072" # live chat
     tty: true
-    command:
-        - sudo su - odoo15 -s /bin/bash
-        - cd /odoo/odoo-server
-        - ./odoo-bin --addons-path="/odoo/odoo-server/addons,/odoo/odoo-server/customs_addons"
+    command: /bin/bash.
+    command: /start-/odoo/odoo-server/odoo-bin --addons-path="/odoo/odoo-server/addons,/odoo/odoo-server/customs_addons"
     environment:
       - HOST=db
       - USER=postgres
