@@ -20,7 +20,10 @@ services:
       - "10015:8069"
       - "20015:8072" # live chat
     tty: true
-    command: --
+    command:
+        - sudo su - odoo15 -s /bin/bash
+        - cd /odoo/odoo-server
+        - ./odoo-bin --addons-path="/odoo/odoo-server/addons,/odoo/odoo-server/customs_addons"
     environment:
       - HOST=db
       - USER=postgres
@@ -28,8 +31,7 @@ services:
     volumes:
       #- /etc/timezone:/etc/timezone:trt
       #- /etc/localtime:/etc/localtime:trt
-      # - ./entrypoint.sh:/entrypoint.sh   # if you want to install additional Python packages, uncomment this line!
+      # - ./entrypoint.sh:/entrypoint.sh
       - ./addons:/mnt/extra-addons
       - ./etc:/etc/odoo
     restart: always             # run as a service
-    
